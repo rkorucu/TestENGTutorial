@@ -1,55 +1,57 @@
     public class Stack {
-    int maxSize;
-    NodeStack top ;      // head;
+    int size;
+    Node top ;      // head;
 
 
    public Stack() {
-       this.maxSize = 0;
+       this.size = 0;
        this.top=null;
            }
 
 
    public boolean isEmpty(){
-       return maxSize==0;
+       return size==0;
      }
      public int capacity(){
-       return maxSize;
+       return size;
      }
 
      public void push(int value){
-       NodeStack newNodeStack=new NodeStack();
+       Node newNodeStack=new Node(value);
           newNodeStack.val=value;
           newNodeStack.next=top;
           top=newNodeStack;
-          maxSize++;
+          size++;
 
      }
-   public int pop(){
-       if (isEmpty()){
+   public void pop(){
+       if (top==null){
            System.out.println("Stack is empty");
+           return ;
        }
 
-       int fistNumber=peek();  // fist of elements of stack in linkedList
+       // fist of elements of stack in linkedList
        this.top=top.next;
-       maxSize--;
-       return fistNumber;
+       size--;
+
 
      }
    public int peek(){
        if (isEmpty()){
            System.out.println("Stack is empty...");
+           return 0;
        }
        return top.val;
 
      }
    public int size(){
-       return maxSize;
+       return size;
      }
    public boolean search(int item){
        if (isEmpty()){
            return false;
        }
-       NodeStack nodeStack=top;
+       Node nodeStack=top;
        while (nodeStack!=null){
            if (nodeStack.val==item){
                return  true;
